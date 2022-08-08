@@ -304,18 +304,7 @@ class IndexController extends Controller
      * @return string
      */
     public function actionTest() {
-        $flag = $this->isGuest();
-        if (null !== $flag) {
-            return $flag;
-        }
-
-
-        echo \Yii::$app->user->Identity->username;
-        try {
-            \Yii::$app->user->logout();
-        } catch (\Exception $e) {
-            echo $e;
-        }
+        echo "blog works";exit;
     }
 
 }

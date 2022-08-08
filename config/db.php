@@ -2,7 +2,7 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=giga.chat;dbname=todo',
+    'dsn' => 'mysql:host=blog;dbname=todo',
     'username' => 'root',
     'password' => '',
     'charset' => 'utf8',
