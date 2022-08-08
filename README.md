@@ -1,12 +1,14 @@
-# Chat project
-- [Chat project](#chat-project)
+# Blog project
+- [Blog project](#blog-project)
     - [Plans to implement:](#plans-to-implement)
     - [Some fix tips:](#some-fix-tips)
 ### Plans to implement:
 
 * user authentication and authorization
-* chat on the pusher api or web hooks
-* and other functions that bring the application closer to the functionality of the messenger
+* user profile with his posts and tags
+* collapsed blog post feed
+* by clicking go to the full version of the article
+* search articles by tags
 
 ### Some fix tips:
 
