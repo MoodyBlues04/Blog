@@ -304,7 +304,8 @@ class IndexController extends Controller
      * @return string
      */
     public function actionTest() {
-        echo "blog works";exit;
+        (new Logger())->log('test log', 'datetime works', __FILE__);
+        exit;
     }
 
 }

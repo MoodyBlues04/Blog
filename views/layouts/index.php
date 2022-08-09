@@ -97,13 +97,6 @@ AppAsset::register($this);
             </div>
         </header>
         <main>
-            <div class="tools">
-                <a href="./index" class="tool">main</a>
-                <a href="#2" class="tool">article</a>
-                <a href="#3" class="tool">feature 3</a>
-                <a href="#4" class="tool">feature 4</a>
-                <a href="#5" class="tool">feature 5</a>
-            </div>
             <div class="content">
                 <?= Alert::widget() ?>
                 <?= $content ?>

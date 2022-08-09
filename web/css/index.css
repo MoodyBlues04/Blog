@@ -69,8 +69,8 @@ main {
     background-color: blueviolet;
 }
 
-.links {
-    width: 20%;
+.tools {
+    width: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,7 +78,7 @@ main {
     background-color: rgb(66, 39, 129);
 }
 
-.link {
+.tool {
     width: 100%;
     height: 50px;
     display: flex;
@@ -97,7 +97,7 @@ main {
 }
 
 .content {
-    width: 80%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
