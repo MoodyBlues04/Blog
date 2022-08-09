@@ -17,7 +17,6 @@ use yii\filters\VerbFilter;
 
 class IndexController extends Controller
 {
-
     public $layout = '@app/views/layouts/home.php';
 
     /**

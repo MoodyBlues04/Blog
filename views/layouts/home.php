@@ -99,7 +99,7 @@ AppAsset::register($this);
         <main>
             <div class="tools">
                 <a href="./index" class="tool">main</a>
-                <a href="#2" class="tool">article</a>
+                <a href="../article/index" class="tool">article</a>
                 <a href="#3" class="tool">feature 3</a>
                 <a href="#4" class="tool">feature 4</a>
                 <a href="#5" class="tool">feature 5</a>
