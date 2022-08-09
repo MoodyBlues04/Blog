@@ -47,6 +47,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Denotes dependencies
      * Finds UserData
      * 
      * @return UserData
@@ -54,6 +55,17 @@ class User extends ActiveRecord implements IdentityInterface
     public function getUserData()
     {
         return $this->hasOne(UserData::class, ['auth_key' => 'auth_key']);
+    }
+
+    /**
+     * Denotes dependencies
+     * Finds Article
+     * 
+     * @return Article
+     */
+    public function getArticle()
+    {
+        return $this->hasMany(Article::class, ['user_id' => 'id']);
     }
 
     /**

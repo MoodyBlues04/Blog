@@ -13,7 +13,7 @@ use yii\db\ActiveRecord;
  * @property string $message
  * @property string $data
  * @property string $stack_trace
- * @property string $created_at
+ * @property dateTime $created_at
  */
 class Logger extends ActiveRecord
 {

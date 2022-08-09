@@ -42,6 +42,7 @@ class UserData extends ActiveRecord
     }
 
     /**
+     * Denotes dependencies
      * Finds User by UserData
      * 
      * @return User
