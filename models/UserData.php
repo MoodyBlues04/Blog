@@ -10,7 +10,7 @@ use yii\db\ActiveRecord;
  * @package app\models
  *
  * @property int $id
- * @property string $auth_key
+ * @property int $user_id
  * @property string $name
  * @property string $surname
  * @property string $gender
@@ -49,7 +49,7 @@ class UserData extends ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(User::class, ['auth_key' => 'auth_key']);
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
     /**

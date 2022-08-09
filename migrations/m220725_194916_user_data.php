@@ -14,7 +14,7 @@ class m220725_194916_user_data extends Migration
     {
         $this->createTable('user_data', [
             'id' => $this->primaryKey(),
-            'auth_key' => $this->string()->notNull(),
+            'user_id' => $this->integer()->notNull(),
             'name' => $this->string(),
             'surname' => $this->string(),
             'gender' => $this->integer(),

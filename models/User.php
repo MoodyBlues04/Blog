@@ -54,7 +54,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getUserData()
     {
-        return $this->hasOne(UserData::class, ['auth_key' => 'auth_key']);
+        return $this->hasOne(UserData::class, ['user_id' => 'id']);
     }
 
     /**
