@@ -16,7 +16,7 @@ class m220809_192700_article extends Migration
             'id' => $this->primaryKey(),
             'user_id' => $this->integer()->notNull(),
             'header' => $this->string()->notNull(),
-            'content' => $this->string()->notNull(),
+            'content' => $this->text()->notNull(),
             'tags' => $this->string(),
             'created_at' => $this->dateTime()
         ]);
