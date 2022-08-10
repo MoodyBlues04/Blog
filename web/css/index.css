@@ -218,7 +218,7 @@ main {
     background-color: rgb(111, 67, 151);
 }
 
-/* article */
+/* article-form */
 
 .article-form {
     width: 60%;
@@ -238,4 +238,53 @@ main {
 
 .article-button {
     width: 100px;
+}
+
+/* article-pagination */
+
+ .article-container {
+    display: flex;
+    width: 60%; 
+    flex-direction: column;
+    margin-bottom: 10px;
+
+    background-color: aquamarine;
+}
+
+.article-author {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.article-user {
+    display: flex;
+    margin-left: 20px;
+    font-size: 105%;
+}
+
+.article-time {
+    display: flex;
+    margin-right: 20px;
+}
+
+.article-header {
+    display: flex;
+    width: 100%;
+    font-size: 120%;
+    margin-left: 20px;
+}
+
+.article-content {
+    display: flex;
+    width: 100%;
+    margin-left: 20px;
+}
+
+.article-tags {
+    display: flex;
+    width: 100%;
+    margin-left: 20px;
 }
