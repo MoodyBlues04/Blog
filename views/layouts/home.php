@@ -98,7 +98,13 @@ AppAsset::register($this);
         </header>
         <main>
             <div class="tools">
-                <a href="./index" class="tool">main</a>
+                <!-- <a href="../index/index" class="tool">main</a> -->
+                <a href="../index/index"><img
+                    src="https://i.ibb.co/hHz1sZ4/home.jpg"
+                    style="width:40px; height: 40px"
+                    alt="home"
+                    border="0">
+                </a>
                 <a href="../article/create" class="tool">article</a>
                 <a href="#3" class="tool">feature 3</a>
                 <a href="#4" class="tool">feature 4</a>
