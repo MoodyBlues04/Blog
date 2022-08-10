@@ -287,7 +287,7 @@ class IndexController extends Controller
     /**
      * Checks is user guest
      * 
-     * @return string
+     * @return null|string
      */
     public function isGuest() {
         if (\Yii::$app->user->isGuest) {

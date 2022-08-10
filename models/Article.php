@@ -21,7 +21,7 @@ class Article extends ActiveRecord
     {
         return [
             [ ['header'], 'string', 'max' => 20],
-            [ ['content'], 'string', 'max' => 500],
+            [ ['content'], 'string', 'max' => 1000],
         ];
     }
 

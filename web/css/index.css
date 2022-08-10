@@ -217,3 +217,25 @@ main {
 
     background-color: rgb(111, 67, 151);
 }
+
+/* article */
+
+.article-form {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: blanchedalmond;
+}
+
+.article-field {
+    display: flex;
+    width: 500px;
+
+}
+
+.article-button {
+    width: 100px;
+}
