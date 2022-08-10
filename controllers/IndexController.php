@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Article;
 use yii\web\Controller;
 use app\models\User;
 use app\models\UserData;
@@ -14,6 +15,7 @@ use yii\web\Response;
 use yii\web\UploadedFile;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\data\Pagination;
 
 class IndexController extends Controller
 {
@@ -68,7 +70,23 @@ class IndexController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $query = Article::find();
+
+        $pagination = new Pagination([
+            'defaultPageSize' => 5,
+            'totalCount' => $query->count(),
+        ]);
+
+        $articles = $query->orderBy('created_at')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+
+        return $this->render('index', [
+            'articles' => $articles,
+            'pagination' => $pagination,
+        ]);
+        // return $this->render('index');
     }
 
     /**
