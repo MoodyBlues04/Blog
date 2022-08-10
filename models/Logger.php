@@ -38,9 +38,7 @@ class Logger extends ActiveRecord
         $this->message = $message;
         $this->data = $data;
         $this->stack_trace = $stack_trace;
-        if (!empty($user_id)) {
-            $this->$user_id = $user_id;
-        }
+        $this->user_id = $user_id;
         $this->created_at = date('Y-m-d H:i:s');
         return $this->save();
     }

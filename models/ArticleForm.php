@@ -29,11 +29,12 @@ class ArticleForm extends Model
      */
     public function upload() {
         $model = new Article();
-        $model->user_id = \Yii::$app->session->identity->id;
+        $model->user_id = \Yii::$app->user->identity->id;
         $model->header = $this->header;
         $model->content = $this->content;
 
-        $tags = explode('#', $this->tags); 
+        $tags = explode('#', $this->tags);
+        array_shift($tags);
         $model->tags = json_encode($tags, JSON_UNESCAPED_UNICODE);
         $model->created_at = date('Y-m-d H:i:s');
         return $model->save();
@@ -45,10 +46,11 @@ class ArticleForm extends Model
      * @param string $attribute the attribute currently being validated
      * @param array $params the additional name-value pairs given in the rule
      */
-    public function validatePassword($attribute, $params)
+    public function validateTags($attribute, $params)
     {
         if (!$this->hasErrors()) {
             $tags = explode('#', $this->tags);
+            array_shift($tags);
             foreach ($tags as $tag) {
                 if (!ctype_alnum($tag)) {
                     $this->addError($attribute, 'Incorrect tags format.');
