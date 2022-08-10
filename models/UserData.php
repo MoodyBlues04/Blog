@@ -26,7 +26,7 @@ class UserData extends ActiveRecord
     public function rules()
     {
         return [
-            [['auth_key'], 'required'],
+            [['user_id'], 'required'],
             ['gender', 'in', 'range' => [self::GENDER_MALE, self::GENDER_FEMALE, self::GENDER_ATTACK_HELICOPTER]],
             [['name', 'surname', 'gender', 'introduction'], 'safe'],
         ];
