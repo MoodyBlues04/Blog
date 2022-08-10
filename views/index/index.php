@@ -15,16 +15,16 @@ use yii\widgets\LinkPager;
                 </div>
 
                 <div class="card-subtitle mb-2 text-muted article-time">
-                    <?= Html::encode("$article->created_at") ?>
+                    <?= Html::encode($article->created_at) ?>
                 </div>
             </div>
 
             <div class="card-title article-header">
-                <?= Html::encode("$article->header") ?>
+                <?= Html::encode($article->header) ?>
             </div>
 
             <div class="card-text article-content">
-                <?= Html::encode("$article->content") ?>
+                <?= Html::encode($article->content) ?>
             </div>
             <!-- переделать в ссылки с поиском или просто в текст хотя бы -->
             <a href="#" class="card-link article-tags"><?= Html::encode("$article->tags") ?></a>

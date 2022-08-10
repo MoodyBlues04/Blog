@@ -204,13 +204,26 @@ class IndexController extends Controller
         if (null !== $flag) {
             return $flag;
         }
-
         $model = User::getData();
-
         $path = UserData::getImgPath();
+
+        $userId = \Yii::$app->user->identity->id;
+        $query = Article::find()->where(['user_id' => $userId]);
+        $pagination = new Pagination([
+            'defaultPageSize' => 5,
+            'totalCount' => $query->count(),
+        ]);
+
+        $articles = $query->orderBy(['created_at' => SORT_DESC])
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+
         return $this->render('profile', [
             'model' => $model,
-            'path' => $path, 
+            'path' => $path,
+            'articles' => $articles,
+            'pagination' => $pagination,
         ]);
     }
 

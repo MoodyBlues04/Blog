@@ -2,6 +2,8 @@
 
 use app\models\UserData;
 use yii\bootstrap4\Html;
+use yii\bootstrap4\LinkPager;
+use yii\helpers\Html as HelpersHtml;
 
 /**
  * @var app\models\UserData $model
@@ -57,5 +59,27 @@ use yii\bootstrap4\Html;
 </div>
 
 <div class="profile-content">
-    <p>some other stuff (your wall)</p>
+    <?php foreach($articles as $article): ?>
+        <div class="profile-article">
+            <div class="profile-article-head">
+                <div class="profile-article-header">
+                    <?= Html::encode($article->header) ?>
+                </div>
+
+                <div class="profile-article-date">
+                    <?= Html::encode($article->created_at) ?>
+                </div>
+            </div>
+
+            <div class="profile-article-content">
+                <?= Html::encode($article->content) ?>
+            </div>
+
+            <div class="profile-article-tags">
+                <?= Html::encode($article->tags) ?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+
+    <?= LinkPager::widget(['pagination' => $pagination]) ?>
 </div>
