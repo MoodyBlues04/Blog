@@ -3,10 +3,12 @@
 use app\models\UserData;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\LinkPager;
-use yii\helpers\Html as HelpersHtml;
 
 /**
  * @var app\models\UserData $model
+ */
+/**
+ * @var yii\db\ActiveQuery $articles
  */
 
 ?>
@@ -98,5 +100,11 @@ use yii\helpers\Html as HelpersHtml;
         </a>
     <?php endforeach; ?>
 
-    <?= LinkPager::widget(['pagination' => $pagination]) ?>
+    <?= LinkPager::widget([
+        'pagination' => $pagination,
+        'options' => [
+            'class' => 'pagination',
+            'maxButtonCount' => 3,
+        ]
+    ]) ?>
 </div>

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Article;
 use yii\base\Controller;
 use app\models\ArticleForm;
 use app\models\Logger;
@@ -11,7 +12,8 @@ class ArticleController extends Controller
 {
     public $layout = '@app/views/layouts/home.php';
 
-    public function actionCreate() {
+    public function actionCreate() 
+    {
         $flag = $this->isGuest();
         if (null !== $flag) {
             return $flag;
@@ -39,8 +41,32 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function actionSearch() {
+    /**
+     * TODO Searches by tag, header or text
+     */
+    public function actionSearch()
+    {
         return $this->render('search');
+    }
+
+    /**
+     * Shows article page
+     * @param int $id article id
+     * @return string
+     */
+    public function actionShow($id = null)
+    {
+        if (null === $id) {
+            \Yii::$app->session->setFlash('error', "article's id unset");
+            $id = \Yii::$app->user->isGuest() ? null : \Yii::$app->user->identity->id;
+            (new Logger())->log("article's id unset", null, __FILE__, $id);
+            return $this->redirect('../index/index');
+        }
+        
+        $article = Article::findOne(['id' => $id]);
+        return $this->render('show', [
+            'article' => $article,
+        ]);
     }
 
         /**

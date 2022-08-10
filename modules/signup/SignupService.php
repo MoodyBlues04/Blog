@@ -2,12 +2,9 @@
 
 namespace app\modules\signup;
 
-use Yii;
 use app\models\User;
 use app\models\SignupForm;
 use app\models\UserData;
-use Exception;
-
 class SignupService
 {
 
@@ -27,21 +24,12 @@ class SignupService
         $user->username = $form->username;
         $user->password = $form->password;
         $user->email = $form->email;
-        $user->confirm_token = Yii::$app->security->generateRandomString();
+        $user->confirm_token = \Yii::$app->security->generateRandomString();
 
-        $user->access_token = Yii::$app->security->generateRandomString();
-        $user->auth_key = Yii::$app->security->generateRandomString();
+        $user->access_token = \Yii::$app->security->generateRandomString();
+        $user->auth_key = \Yii::$app->security->generateRandomString();
         
         $user->status = User::STATUS_WAIT;
-        
-        // echo "<pre>" . PHP_EOL .
-        //         $user->username . PHP_EOL .
-        //         $user->password . PHP_EOL .
-        //         $user->email . PHP_EOL .
-        //         $user->confirm_token . PHP_EOL .
-        //         $user->access_token . PHP_EOL .
-        //         $user->auth_key . PHP_EOL .
-        //     "</pre>";
         
         if (!$user->save()) {
             throw new \Exception("Saving exception.");
@@ -61,7 +49,7 @@ class SignupService
     {
         $email = $user->email;
 
-        $sent = Yii::$app->mailer
+        $sent = \Yii::$app->mailer
             ->compose(
                 ['html' => 'signup-confirm'],
                 ['user' => $user])
@@ -78,7 +66,7 @@ class SignupService
     /**
      * Validates the token
      * 
-     * @param SignupForm $form
+     * @param string $token
      *
      * @throws Exception
      */
@@ -100,7 +88,7 @@ class SignupService
         //     throw new \Exception('Saving error.');
         // }
 
-        if (!Yii::$app->getUser()->login($user)){
+        if (!\Yii::$app->getUser()->login($user)){
             throw new \Exception('Error authentication.');
         }
 

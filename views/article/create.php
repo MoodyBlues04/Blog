@@ -3,10 +3,14 @@
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 
+/**
+ * @var app\models\Article $model
+ */
+
 ?>
 
 <?php $form = ActiveForm::begin([
-    'id' => 'downloadSourceCode',
+    'id' => 'article-form',
     'options' => ['class'=>'article-form'],
 ]); ?>
 

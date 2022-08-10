@@ -1,6 +1,10 @@
 <?php
 use yii\helpers\Html;
-use yii\widgets\LinkPager;
+use yii\bootstrap4\LinkPager;
+
+/**
+ * @var yii\db\ActiveQuery $articles
+ */
 ?>
 <h1>Articles</h1>
 <?php foreach ($articles as $article): ?>
@@ -45,5 +49,8 @@ use yii\widgets\LinkPager;
 
 <?= LinkPager::widget([
     'pagination' => $pagination,
-    'options' => ['class' => '']
+    'options' => [
+        'class' => 'pagination',
+        'maxButtonCount' => 5,
+    ]
 ]) ?>

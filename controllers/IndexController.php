@@ -175,6 +175,7 @@ class IndexController extends Controller
 
     /**
      * Verifies confirm token
+     * @param string $token
      * 
      * @return string
      */
@@ -182,14 +183,14 @@ class IndexController extends Controller
     {
         $service = new SignupService();
     
-        // try{
+        try{
             $service->confirmation($token);
             \Yii::$app->session->setFlash('success', 'You have successfully confirmed your registration.');
-        // } catch (\Exception $e){
-        //     \Yii::$app->errorHandler->logException($e);
-        //     \Yii::$app->session->setFlash('error', $e->getMessage());
-        //     (new Logger())->log('confirm error', $e->getMessage(), __FILE__);
-        // }
+        } catch (\Exception $e){
+            \Yii::$app->errorHandler->logException($e);
+            \Yii::$app->session->setFlash('error', $e->getMessage());
+            (new Logger())->log('confirm error', $e->getMessage(), __FILE__);
+        }
     
         return $this->goHome();
     }
@@ -199,7 +200,8 @@ class IndexController extends Controller
      * 
      * @return string
      */
-    public function actionProfile() {
+    public function actionProfile()
+    {
         $flag = $this->isGuest();
         if (null !== $flag) {
             return $flag;
@@ -232,7 +234,8 @@ class IndexController extends Controller
      * 
      * @return strring
      */
-    public function actionSettings() {
+    public function actionSettings() 
+    {
         $flag = $this->isGuest();
         if (null !== $flag) {
             return $flag;
@@ -247,7 +250,8 @@ class IndexController extends Controller
      * 
      * @return string
      */
-    public function actionEdit() {
+    public function actionEdit()
+    {
         $flag = $this->isGuest();
         if (null !== $flag) {
             return $flag;
@@ -333,7 +337,8 @@ class IndexController extends Controller
      * 
      * @return string
      */
-    public function actionTest() {
+    public function actionTest()
+    {
         (new Logger())->log('test log', 'datetime works', __FILE__);
         exit;
     }
