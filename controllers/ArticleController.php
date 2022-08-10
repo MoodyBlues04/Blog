@@ -3,11 +3,10 @@
 namespace app\controllers;
 
 use app\models\Article;
+use app\models\SearchForm;
 use yii\web\Controller;
 use app\models\ArticleForm;
 use app\models\Logger;
-use yii\helpers\Url;
-
 class ArticleController extends Controller
 {
     public $layout = '@app/views/layouts/home.php';
@@ -46,7 +45,11 @@ class ArticleController extends Controller
      */
     public function actionSearch()
     {
-        return $this->render('search');
+        $searchForm = new SearchForm();
+
+        return $this->render('search', [
+            'model' => $searchForm,
+        ]);
     }
 
     /**
