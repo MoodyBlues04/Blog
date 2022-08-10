@@ -3,6 +3,7 @@
 use app\models\UserData;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\LinkPager;
+use yii\helpers\Url;
 
 /**
  * @var app\models\UserData $model
@@ -21,7 +22,7 @@ use yii\bootstrap4\LinkPager;
                 alt=""
                 border="0"
             >
-            <a href="./upload-img" class="button-link">
+            <a href=<?= Url::to(['index/upload-img'])?> class="button-link">
                 <button 
                     type="button"
                     class="change-icon btn btn-outline-primary"
@@ -32,7 +33,7 @@ use yii\bootstrap4\LinkPager;
         </div>
 
         <div class="left-content">
-            <a href="./edit" class="button-link">
+            <a href=<?= Url::to(['index/edit'])?> class="button-link">
                 <button
                     type="button"
                     class="profile-edit btn btn-outline-primary"
@@ -62,7 +63,7 @@ use yii\bootstrap4\LinkPager;
 
 <div class="profile-content">
     <?php foreach($articles as $article): ?>
-        <a href="#" class="card profile-article">
+        <a href= <?= Url::to(['/article/show', 'id' => $article->id]) ?> class="card profile-article">
                 <div class="card-subtitle profile-article-head">
                     <div class="profile-article-header">
                         <?= Html::encode($article->header) ?>

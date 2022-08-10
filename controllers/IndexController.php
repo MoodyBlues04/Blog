@@ -267,7 +267,7 @@ class IndexController extends Controller
         }
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('./profile');
+            return $this->redirect(['index/profile']);
         }
         return $this->render('edit', [
             'model' => $model,
@@ -297,7 +297,7 @@ class IndexController extends Controller
             if (null !== $link) {
                 $model->image = $link;
                 $model->save();
-                return $this->redirect('./profile');
+                return $this->redirect(['index/profile']);
             }
             
             throw new \Exception('upload error');

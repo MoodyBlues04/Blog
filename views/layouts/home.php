@@ -10,6 +10,7 @@ use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -66,14 +67,29 @@ AppAsset::register($this);
 
                     <?php if (!Yii::$app->user->isGuest): ?>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="./profile">Профиль</a>
-                            <a class="dropdown-item" href="./settings">Настройки</a>
-                            <a class="dropdown-item" href="./log-out">Выйти</a>
+                            <a 
+                                class="dropdown-item"
+                                href= <?= Url::to(['index/profile']) ?>
+                            >Профиль</a>
+                            <a 
+                                class="dropdown-item"
+                                href= <?= Url::to(['index/settings']) ?>
+                            >Настройки</a>
+                            <a 
+                                class="dropdown-item"
+                                href= <?= Url::to(['index/log-out']) ?>
+                            >Выйти</a>
                         </div>
                     <?php else: ?>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="./login">Log In</a>
-                            <a class="dropdown-item" href="./signup">Sign Up</a>
+                            <a 
+                                class="dropdown-item"
+                                href= <?= Url::to(['index/login']) ?>
+                            >Log In</a>
+                            <a 
+                                class="dropdown-item"
+                                href= <?= Url::to(['index/signup']) ?>
+                            >Sign Up</a>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -98,15 +114,20 @@ AppAsset::register($this);
         </header>
         <main>
             <div class="tools">
-                <!-- <a href="../index/index" class="tool">main</a> -->
-                <a href="../index/index"><img
+                <a href=<?= Url::to(['index/index']) ?>><img
                     src="https://i.ibb.co/hHz1sZ4/home.jpg"
                     style="width:40px; height: 40px"
                     alt="home"
                     border="0">
                 </a>
-                <a href="../article/create" class="tool">publish</a>
-                <a href="../article/search" class="tool">search</a>
+                <a 
+                    class="tool"
+                    href= <?= Url::to(['article/create']) ?>
+                >publish</a>
+                <a 
+                    class="tool"
+                    href= <?= Url::to(['article/search']) ?>
+                >search</a>
                 <a href="#4" class="tool">feature 4</a>
                 <a href="#5" class="tool">feature 5</a>
             </div>

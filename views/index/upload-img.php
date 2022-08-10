@@ -1,4 +1,6 @@
 <?php
+
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 /**
@@ -13,5 +15,5 @@ use yii\widgets\ActiveForm;
         <button class="btn btn-primary">Submit</button>
 
     <?php ActiveForm::end() ?>
-    <a href="./profile">Back</a>
+    <a href=<?= Url::to(['index/profile'])?>>Back</a>
 </div>

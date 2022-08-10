@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use app\models\Article;
-use yii\base\Controller;
+use yii\web\Controller;
 use app\models\ArticleForm;
 use app\models\Logger;
 use yii\helpers\Url;
@@ -58,11 +58,11 @@ class ArticleController extends Controller
     {
         if (null === $id) {
             \Yii::$app->session->setFlash('error', "article's id unset");
-            $id = \Yii::$app->user->isGuest() ? null : \Yii::$app->user->identity->id;
+            $id = \Yii::$app->user->isGuest ? null : \Yii::$app->user->identity->id;
             (new Logger())->log("article's id unset", null, __FILE__, $id);
-            return $this->redirect('../index/index');
+            return $this->redirect(['/index/index']);
         }
-        
+
         $article = Article::findOne(['id' => $id]);
         return $this->render('show', [
             'article' => $article,
