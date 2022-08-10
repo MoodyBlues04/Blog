@@ -26,10 +26,24 @@ use yii\widgets\LinkPager;
             <div class="card-text article-content">
                 <?= Html::encode($article->content) ?>
             </div>
+
             <!-- переделать в ссылки с поиском или просто в текст хотя бы -->
-            <a href="#" class="card-link article-tags"><?= Html::encode("$article->tags") ?></a>
+            <?php if (!empty($article->tags)): ?>
+                    <div class="profile-article-tags" style="margin-top: 5px">
+                        <?php $tags = json_decode($article->tags, true);
+                            foreach ($tags as $tag):
+                        ?>
+                            <a href="#" class="tag">
+                                <?= Html::encode("#$tag") ?>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+            <?php endif; ?>
         </div>
     </div>
 <?php endforeach; ?>
 
-<?= LinkPager::widget(['pagination' => $pagination]) ?>
+<?= LinkPager::widget([
+    'pagination' => $pagination,
+    'options' => ['class' => '']
+]) ?>

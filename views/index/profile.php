@@ -60,25 +60,42 @@ use yii\helpers\Html as HelpersHtml;
 
 <div class="profile-content">
     <?php foreach($articles as $article): ?>
-        <div class="profile-article">
-            <div class="profile-article-head">
-                <div class="profile-article-header">
-                    <?= Html::encode($article->header) ?>
+        <a href="#" class="card profile-article">
+                <div class="card-subtitle profile-article-head">
+                    <div class="profile-article-header">
+                        <?= Html::encode($article->header) ?>
+                    </div>
+
+                    <div class="card-subtitle text-muted mb-2 profile-article-date">
+                        <?= Html::encode($article->created_at) ?>
+                    </div>
                 </div>
 
-                <div class="profile-article-date">
-                    <?= Html::encode($article->created_at) ?>
+                <div class="card-text profile-article-content">
+                    <?php 
+                        if (mb_strlen($article->content, 'utf-8') > 100) {
+                            echo Html::encode(mb_substr($article->content, 0, 100) . '...');
+                        } else {
+                            echo Html::encode($article->content);
+                        }
+                    ?>
                 </div>
-            </div>
 
-            <div class="profile-article-content">
-                <?= Html::encode($article->content) ?>
-            </div>
-
-            <div class="profile-article-tags">
-                <?= Html::encode($article->tags) ?>
-            </div>
-        </div>
+                <!-- переделать в ссылки с поиском или просто в текст хотя бы -->
+                <?php if (!empty($article->tags)): ?>
+                    <div class="profile-article-tags">
+                        <?php $tags = json_decode($article->tags, true);
+                            foreach ($tags as $tag):
+                        ?>
+                            <div class="tag">
+                                <?= Html::encode("#$tag") ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php else: ?>
+                    <div style="width: 100%; height: 24px"> </div>
+                <?php endif; ?>
+        </a>
     <?php endforeach; ?>
 
     <?= LinkPager::widget(['pagination' => $pagination]) ?>

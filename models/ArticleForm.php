@@ -35,7 +35,9 @@ class ArticleForm extends Model
 
         $tags = explode('#', $this->tags);
         array_shift($tags);
-        $model->tags = json_encode($tags, JSON_UNESCAPED_UNICODE);
+        if (!empty($tags)) {
+            $model->tags = json_encode($tags, JSON_UNESCAPED_UNICODE);
+        }
         $model->created_at = date('Y-m-d H:i:s');
         return $model->save();
     }
