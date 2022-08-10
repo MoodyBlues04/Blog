@@ -39,6 +39,10 @@ class ArticleController extends Controller
         ]);
     }
 
+    public function actionSearch() {
+        return $this->render('search');
+    }
+
         /**
      * Checks is user guest
      * 

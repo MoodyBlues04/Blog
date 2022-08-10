@@ -77,7 +77,7 @@ class IndexController extends Controller
             'totalCount' => $query->count(),
         ]);
 
-        $articles = $query->orderBy('created_at')
+        $articles = $query->orderBy(['created_at' => SORT_DESC])
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();

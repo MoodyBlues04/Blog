@@ -105,8 +105,8 @@ AppAsset::register($this);
                     alt="home"
                     border="0">
                 </a>
-                <a href="../article/create" class="tool">article</a>
-                <a href="#3" class="tool">feature 3</a>
+                <a href="../article/create" class="tool">publish</a>
+                <a href="../article/search" class="tool">search</a>
                 <a href="#4" class="tool">feature 4</a>
                 <a href="#5" class="tool">feature 5</a>
             </div>
