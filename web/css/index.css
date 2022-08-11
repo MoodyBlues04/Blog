@@ -362,13 +362,20 @@ main {
 /* search */
 
 .search-form {
+    display: flex;
+    margin-top: 20px;
+    height: 38px;
+    width: 60%;
+    justify-content: space-between;
 
+    /* background-color: aqua; */
 }
 
 .search-field {
-
+    display: flex;
+    margin-right: 10px;
 }
 
 .search-button {
-    
+    display: flex;
 }

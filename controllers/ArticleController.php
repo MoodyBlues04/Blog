@@ -7,6 +7,8 @@ use app\models\SearchForm;
 use yii\web\Controller;
 use app\models\ArticleForm;
 use app\models\Logger;
+use yii\data\Pagination;
+
 class ArticleController extends Controller
 {
     public $layout = '@app/views/layouts/home.php';
@@ -42,10 +44,40 @@ class ArticleController extends Controller
 
     /**
      * TODO Searches by tag, header or text
+     * @param string $postInput
      */
-    public function actionSearch()
+    public function actionSearch($postInput = null)
     {
         $searchForm = new SearchForm();
+
+        if (null !== $postInput) {
+            echo "not yet";exit;
+        }
+
+        $url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http')
+            . '://'
+            . $_SERVER['HTTP_HOST']
+            . $_SERVER['REQUEST_URI'];
+
+        if ($searchForm->load(\Yii::$app->request->post()) || stristr($url, '?page=')) {
+            $query = Article::find();
+
+            $pagination = new Pagination([
+                'defaultPageSize' => 5,
+                'totalCount' => $query->count(),
+            ]);
+
+            $articles = $query->orderBy(['created_at' => SORT_DESC])
+                ->offset($pagination->offset)
+                ->limit($pagination->limit)
+                ->all();
+
+            return $this->render('search', [
+                'model' => $searchForm,
+                'articles' => $articles,
+                'pagination' => $pagination,
+            ]);
+        }
 
         return $this->render('search', [
             'model' => $searchForm,
