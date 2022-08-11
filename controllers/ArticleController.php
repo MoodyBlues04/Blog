@@ -50,6 +50,11 @@ class ArticleController extends Controller
     {
         $searchForm = new SearchForm();
 
+        // TODO вместо $postInput
+        /*if (!empty($_GET['postInput'])) {
+            ...
+        }*/
+
         if (null !== $postInput) {
             echo "not yet";exit;
         }
