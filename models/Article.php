@@ -12,6 +12,7 @@ use yii\db\ActiveRecord;
  * @property int $user_id
  * @property string $header
  * @property string $content
+ * @property string $tags
  * @property dateTime $created_at
  */
 class Article extends ActiveRecord

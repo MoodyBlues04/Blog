@@ -35,6 +35,7 @@ class ArticleForm extends Model
 
         $tags = explode('#', $this->tags);
         array_shift($tags);
+        var_dump($tags);exit;
         if (!empty($tags)) {
             $model->tags = json_encode($tags, JSON_UNESCAPED_UNICODE);
         }

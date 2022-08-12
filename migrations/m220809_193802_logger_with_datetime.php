@@ -21,7 +21,7 @@ class m220809_193802_logger_with_datetime extends Migration
      */
     public function safeDown()
     {
-        echo "Column created_at from table logger deleted now string.\n";
+        echo "Column created_at from table logger now string.\n";
 
         $this->dropColumn('logger', 'created_at');
         $this->addColumn('logger', 'created_at', $this->string()->after('stack_trace'));
