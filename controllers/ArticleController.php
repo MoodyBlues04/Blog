@@ -44,41 +44,30 @@ class ArticleController extends Controller
     }
 
     /**
-     * TODO Finds all articles with given tag
-     * @param string $postInput
+     * Finds all articles with given tag
      */
-    public function actionSearch($postInput = null)
+    public function actionSearch()
     {
         $searchForm = new SearchForm();
-
-        // TODO вместо $postInput
-        /*if (!empty($_GET['postInput'])) {
-            ...
-        }*/
-
-        if (null !== $postInput) {
-            echo "not yet";exit;
-        }
 
         $url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http')
             . '://'
             . $_SERVER['HTTP_HOST']
             . $_SERVER['REQUEST_URI'];
 
+        // echo \Yii::$app->request->get();exit;
+        // TODO обработка Get запросов
+
         if ($searchForm->load(\Yii::$app->request->post()) || stristr($url, '?page=')) {
-            // var_dump($searchForm->textInput);exit;
-            // $query = Article::find();
 
             $tags = $searchForm->getTagsAsArray();
             $query = Article::find()->joinWith('tags', true, 'LEFT JOIN')->where(['in', 'name', $tags]);
-            // var_dump($query);exit;
 
             $pagination = new Pagination([
                 'defaultPageSize' => 5,
                 'totalCount' => $query->count(),
             ]);
 
-            var_dump($query);exit;
             $articles = $query->orderBy(['created_at' => SORT_DESC])
                 ->offset($pagination->offset)
                 ->limit($pagination->limit)
