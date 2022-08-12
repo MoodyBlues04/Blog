@@ -9,6 +9,7 @@ use app\models\UserData;
 use app\models\Logger;
 use app\models\SignupForm;
 use app\models\LoginForm;
+use app\models\Tag;
 use app\models\UploadImgForm;
 use app\modules\signup\SignupService;
 use yii\web\Response;
@@ -339,8 +340,18 @@ class IndexController extends Controller
      */
     public function actionTest()
     {
-        (new Logger())->log('test log', 'datetime works', __FILE__);
-        exit;
+        $article = new Article();
+        $article->user_id = 5;
+        $article->header = 'test';
+        $article->content = 'test of the many-to-many relationship';
+        $article->created_at = date('Y-m-d H:i:s');
+        $article->save();
+
+        $tag = new Tag();
+        $tag->name = 'test_tag';
+        $tag->save();
+
+        $article->link('tags', $tag);
     }
 
 }
