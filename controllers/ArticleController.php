@@ -43,7 +43,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * TODO Searches by tag, header or text
+     * TODO Finds all articles with given tag
      * @param string $postInput
      */
     public function actionSearch($postInput = null)
