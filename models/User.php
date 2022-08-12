@@ -31,7 +31,7 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             [['username', 'password', 'email', 'auth_key', 'access_token'], 'required'],
             [ ['password'], 'string', 'min' => 8],
-            // [['username', 'email'], 'unique'],
+            [['username', 'email'], 'unique'],
             ['status', 'in', 'range' => [self::STATUS_DELETED, self::STATUS_WAIT, self::STATUS_ACTIVE]],
             [['email'], 'email'],
         ];
@@ -50,7 +50,7 @@ class User extends ActiveRecord implements IdentityInterface
      * Denotes dependencies
      * Finds UserData
      * 
-     * @return UserData
+     * @return app\models\UserData
      */
     public function getUserData()
     {
@@ -59,9 +59,9 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * Denotes dependencies
-     * Finds Article
+     * Finds Articles
      * 
-     * @return Article
+     * @return app\models\Article
      */
     public function getArticle()
     {
@@ -71,7 +71,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Finds UserData by session data.
      * 
-     * @return UserData
+     * @return app\models\UserData
      */
     public static function getData() {
         if (Yii::$app->user->isGuest) {
@@ -87,7 +87,7 @@ class User extends ActiveRecord implements IdentityInterface
      * 
      * @param int $id
      * 
-     * @return User 
+     * @return app\models\User 
      */
     public static function findIdentity($id)
     {
@@ -99,7 +99,7 @@ class User extends ActiveRecord implements IdentityInterface
      * 
      * @param string $token
      * 
-     * @return User 
+     * @return app\models\User 
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
@@ -111,7 +111,7 @@ class User extends ActiveRecord implements IdentityInterface
      *
      * @param string $username
      * 
-     * @return User
+     * @return app\models\User
      */
     public static function findByUsername($username)
     {
@@ -123,7 +123,7 @@ class User extends ActiveRecord implements IdentityInterface
      *
      * @param string $email
      * 
-     * @return User
+     * @return app\models\User
      */
     public static function findByEmail($email)
     {

@@ -36,10 +36,21 @@ class Article extends ActiveRecord
     /**
      * Denotes dependencies
      * Finds User
-     * @return User
+     * @return app\models\User
      */
     public function getUser()
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
+    }
+
+    /**
+     * Denotes dependencies
+     * Finds Articles
+     * 
+     * @return app\models\Article
+     */
+    public function getTags() {
+        return $this->hasMany(Tag::class, ['id' => 'tag_id'])
+            ->viaTable('article_to_tag', ['article_id' => 'id']);
     }
 }
