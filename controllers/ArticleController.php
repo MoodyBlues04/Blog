@@ -66,13 +66,19 @@ class ArticleController extends Controller
             . $_SERVER['REQUEST_URI'];
 
         if ($searchForm->load(\Yii::$app->request->post()) || stristr($url, '?page=')) {
-            $query = Article::find();
+            // var_dump($searchForm->textInput);exit;
+            // $query = Article::find();
+
+            $tags = $searchForm->getTagsAsArray();
+            $query = Article::find()->joinWith('tags', true, 'LEFT JOIN')->where(['in', 'name', $tags]);
+            // var_dump($query);exit;
 
             $pagination = new Pagination([
                 'defaultPageSize' => 5,
                 'totalCount' => $query->count(),
             ]);
 
+            var_dump($query);exit;
             $articles = $query->orderBy(['created_at' => SORT_DESC])
                 ->offset($pagination->offset)
                 ->limit($pagination->limit)
