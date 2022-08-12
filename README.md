@@ -13,4 +13,5 @@
 ### Some fix tips
 
 * if confirm raises the following exception: "foreach argument must be array, string given", add the following to the app/vendor/yiisoft/yii2/db/BaseActiveRecord, method getOldPrimaryKey: 'if (!is_array($keys)) {$keys = array($keys);}'
+* if you have some problems with search, add this line to your vendor/yiisoft/yii2/db/ActiveQuery.php, line 253: $pks = (array)$pks;
 
