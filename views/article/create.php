@@ -15,18 +15,18 @@ use yii\bootstrap4\ActiveForm;
 ]); ?>
 
     <?= $form->field($model, 'header', ['enableLabel' => false])->textarea([
-        'rows' => '2',
+        'rows' => 2,
         'placeholder' => 'header',
         'class'=>'form-control text-center article-field'
     ]) ?>
     <?= $form->field($model, 'content', ['enableLabel' => false])->textarea([
-        'rows' => '8',
+        'rows' => 8,
         'placeholder' => 'article content',
         'class'=>'form-control text-center article-field'
     ]) ?>
     <?= $form->field($model, 'tags', ['enableLabel' => false])->textarea([
-        'rows' => '2',
-        'placeholder' => "enter tags without space\n input example: #tag1#tag2)",
+        'rows' => 1,
+        'placeholder' => "enter tags input example: #tag1#tag2",
         'class'=>'form-control text-center article-field'
     ]) ?>
 

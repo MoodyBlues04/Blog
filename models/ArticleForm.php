@@ -25,22 +25,35 @@ class ArticleForm extends Model
     /**
      * Loads form data to database
      * 
-     * @return bool
+     * @throws \Exception
+     * @return void
      */
     public function upload() {
-        $model = new Article();
-        $model->user_id = \Yii::$app->user->identity->id;
-        $model->header = $this->header;
-        $model->content = $this->content;
+        $article = new Article();
+        $article->user_id = \Yii::$app->user->identity->id;
+        $article->header = $this->header;
+        $article->content = $this->content;
 
         $tags = explode('#', $this->tags);
         array_shift($tags);
-        var_dump($tags);exit;
         if (!empty($tags)) {
-            $model->tags = json_encode($tags, JSON_UNESCAPED_UNICODE);
+            $article->tags = json_encode($tags, JSON_UNESCAPED_UNICODE);
         }
-        $model->created_at = date('Y-m-d H:i:s');
-        return $model->save();
+        
+        $article->created_at = date('Y-m-d H:i:s');
+        if (!$article->save()) {
+            throw new \Exception('model not saved');
+        }
+
+        foreach ($tags as $name) {
+            $tag = new Tag();
+            $tag->name = $name;
+            if (!$tag->save()) {
+                throw new \Exception('tag not saved');
+            }
+
+            $article->link('tags', $tag);
+        }
     }
 
     /**

@@ -24,7 +24,8 @@ class ArticleController extends Controller
 
         if ($model->load(\Yii::$app->request->post())) {
             try {
-                if ($model->validate() && $model->upload()) {
+                if ($model->validate()) {
+                    $model->upload();
                     return $this->goHome();
                 } else {
                     throw new \Exception('saving error');
