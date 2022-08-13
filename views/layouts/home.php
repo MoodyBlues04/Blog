@@ -70,15 +70,15 @@ AppAsset::register($this);
                             <a 
                                 class="dropdown-item"
                                 href= <?= Url::to(['index/profile']) ?>
-                            >Профиль</a>
+                            >Profile</a>
                             <a 
                                 class="dropdown-item"
                                 href= <?= Url::to(['index/settings']) ?>
-                            >Настройки</a>
+                            >Settings</a>
                             <a 
                                 class="dropdown-item"
                                 href= <?= Url::to(['index/log-out']) ?>
-                            >Выйти</a>
+                            >Log out</a>
                         </div>
                     <?php else: ?>
                         <div class="dropdown-menu">
@@ -114,22 +114,53 @@ AppAsset::register($this);
         </header>
         <main>
             <div class="tools">
-                <a href=<?= Url::to(['index/index']) ?>><img
+                <a
+                    class="tool"
+                    href=<?= Url::to(['index/index']) ?>
+                ><img
                     src="https://i.ibb.co/hHz1sZ4/home.jpg"
-                    style="width:40px; height: 40px"
+                    style="width:35px; height: 35px"
                     alt="home"
                     border="0">
                 </a>
+
                 <a 
                     class="tool"
                     href= <?= Url::to(['article/create']) ?>
-                >publish</a>
+                ><img 
+                    src="https://i.ibb.co/sv6Td2y/create.png"
+                    style="width:35px; height: 35px"
+                    alt="create"
+                    border="0">
+                </a>
+
                 <a 
                     class="tool"
                     href= <?= Url::to(['article/search']) ?>
-                >search</a>
-                <a href="#4" class="tool">feature 4</a>
-                <a href="#5" class="tool">feature 5</a>
+                ><img 
+                    src="https://i.ibb.co/Qc3MRqs/search.webp"
+                    style="width:35px; height: 35px"
+                    alt="search"
+                    border="0">
+                </a>
+                <a 
+                    href= <?= Url::to(['index/settings']) ?> 
+                    class="tool"
+                ><img 
+                    src="https://i.ibb.co/pnjwS2R/settings2.png"
+                    style="width:35px; height: 35px"    
+                    alt="settings"
+                    border="0">
+                </a>
+                <a
+                    href= <?= Url::to(['index/log-out']) ?>
+                    class="tool"
+                ><img
+                    src="https://i.ibb.co/ZhFHfQ2/log-out.png"
+                    style="width:35px; height: 35px" 
+                    alt="log-out"
+                    border="0">
+                </a>
             </div>
             <div class="content">
                 <?= Alert::widget() ?>

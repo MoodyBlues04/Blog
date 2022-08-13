@@ -38,7 +38,7 @@ use yii\helpers\Url;
                     type="button"
                     class="profile-edit btn btn-outline-primary"
                 >
-                    Редактировать
+                    Edit
                 </button>
             </a>
         </div>
@@ -57,7 +57,6 @@ use yii\helpers\Url;
             <h2>Enter some introduction here</h2>
         <?php endif; ?>
         
-        <div>some another information maybe (not users')</div>
     </div>
 </div>
 
