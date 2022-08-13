@@ -114,7 +114,7 @@ AppAsset::register($this);
         </header>
         <main>
             <div class="tools">
-                <a
+                <a 
                     class="tool"
                     href=<?= Url::to(['index/index']) ?>
                 ><img
