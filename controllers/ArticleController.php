@@ -46,7 +46,7 @@ class ArticleController extends Controller
     /**
      * Finds all articles with given tag
      */
-    public function actionSearch()
+    public function actionSearch($tag = null)
     {
         $searchForm = new SearchForm();
 
@@ -55,10 +55,13 @@ class ArticleController extends Controller
             . $_SERVER['HTTP_HOST']
             . $_SERVER['REQUEST_URI'];
 
-        // echo \Yii::$app->request->get();exit;
-        // TODO обработка Get запросов
+        
+        if (!$searchForm->load(\Yii::$app->request->post()) && null !== $tag) {
+            $searchForm->textInput = $tag;
+            // return $this->redirect(['article/search']);
+        }
 
-        if ($searchForm->load(\Yii::$app->request->post()) || stristr($url, '?page=')) {
+        if (!empty($searchForm->textInput) ||  stristr($url, '?page=')) {
 
             $tags = $searchForm->getTagsAsArray();
             $query = Article::find()->joinWith('tags', true, 'LEFT JOIN')->where(['in', 'name', $tags]);

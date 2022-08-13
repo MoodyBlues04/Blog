@@ -1,6 +1,7 @@
 <?php
 use yii\bootstrap4\Html;
 use yii\bootstrap4\LinkPager;
+use yii\helpers\Url;
 
 /**
  * @var yii\db\ActiveQuery $articles
@@ -37,7 +38,7 @@ use yii\bootstrap4\LinkPager;
                         <?php $tags = json_decode($article->tags, true);
                             foreach ($tags as $tag):
                         ?>
-                            <a href="#" class="tag">
+                            <a href=<?= Url::to(['article/search', 'tag' => '#' . $tag]) ?> class="tag">
                                 <?= Html::encode("#$tag") ?>
                             </a>
                         <?php endforeach; ?>

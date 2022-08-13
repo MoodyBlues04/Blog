@@ -61,7 +61,7 @@ use yii\helpers\Url;
                                 <?php $tags = json_decode($article->tags, true);
                                     foreach ($tags as $tag):
                                 ?>
-                                    <a href="#" class="tag">
+                                    <a href=<?= Url::to(['article/search', 'tag' => '#' . $tag]) ?> class="tag">
                                         <?= Html::encode("#$tag") ?>
                                     </a>
                                 <?php endforeach; ?>
