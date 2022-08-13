@@ -62,6 +62,7 @@ AppAsset::register($this);
                         type="button"
                         data-toggle="dropdown"
                         aria-expanded="false"
+                        
                     >
                     </button>
 
@@ -103,13 +104,12 @@ AppAsset::register($this);
                     }
                 ?>
                 </div>
-
                 <img
-					class="user-icon"
-					src= <?= Html::encode(UserData::getImgPath()) ?>
-					alt=""
-					border="0"
-				>
+                    class="user-icon"
+                    src= <?= Html::encode(UserData::getImgPath()) ?>
+                    alt=""
+                    border="0"
+                >
             </div>
         </header>
         <main>
@@ -167,9 +167,6 @@ AppAsset::register($this);
                 <?= $content ?>
             </div>
         </main>
-        <footer>
-            some footer text
-        </footer>
     <?php $this->endBody() ?>
     </body>
 </html>
