@@ -29,6 +29,7 @@ class UserData extends ActiveRecord
             [['user_id'], 'required'],
             ['gender', 'in', 'range' => [self::GENDER_MALE, self::GENDER_FEMALE, self::GENDER_ATTACK_HELICOPTER]],
             [['name', 'surname', 'gender', 'introduction'], 'safe'],
+            [['introduction'], 'string', 'max' => 800],
         ];
     }
 

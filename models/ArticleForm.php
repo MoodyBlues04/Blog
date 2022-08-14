@@ -19,6 +19,8 @@ class ArticleForm extends Model
         return [
             [['header', 'content'], 'required', 'message' => 'please fill in header and content'],
             [['tags'], 'validateTags', 'message' => 'Incorrect tags format.'],
+            [['content'], 'string', 'max' => 1000],
+            [['header'], 'string', 'max' => 20],
         ];
     }
 

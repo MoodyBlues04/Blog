@@ -15,9 +15,7 @@ use yii\helpers\Url;
     'options' => ['class'=>'search-form'],
 ]); ?>
 
-    <?= $form->field($model, 'textInput', ['enableLabel' => false])->textarea([
-        'rows' => 1,
-        'cols' => 80,
+    <?= $form->field($model, 'textInput', ['enableLabel' => false])->textInput([
         'placeholder' => 'search..',
         'class'=>'form-control search-field'
     ]) ?>

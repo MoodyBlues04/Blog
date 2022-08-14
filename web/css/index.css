@@ -214,6 +214,7 @@ main {
 .profile-edit {
     display: flex;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .edit-form-container {
@@ -230,6 +231,17 @@ main {
     flex-direction: column;
 
     /* background-color: rgb(111, 67, 151); */
+}
+
+.name {
+    display: flex;
+    margin-top: 25px;
+    margin-bottom: 20px;;
+}
+
+.introduction {
+    display: flex;
+    width: 95%;
 }
 
 /* profile articles */
@@ -389,6 +401,7 @@ main {
 .search-field {
     display: flex;
     margin-right: 10px;
+    width: 630px;    
 }
 
 .search-button {

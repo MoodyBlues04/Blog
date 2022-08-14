@@ -38,7 +38,7 @@ use yii\helpers\Url;
                     type="button"
                     class="profile-edit btn btn-outline-primary"
                 >
-                    Edit
+                    Redact
                 </button>
             </a>
         </div>
@@ -46,15 +46,15 @@ use yii\helpers\Url;
 
     <div class="profile-right">
         <?php if (!empty($model->name) && !empty($model->surname)): ?>
-            <h2><?= Html::encode($model->name) . ' ' . Html::encode($model->surname)?></h2>
+            <h2 class="name"><?= Html::encode($model->name) . ' ' . Html::encode($model->surname)?></h2>
         <?php else: ?>
-            <h2>Enter your name and surname</h2>
+            <h2 class="name">Enter your name and surname</h2>
         <?php endif; ?>
         
         <?php if (!empty($model->introduction)): ?>
-            <p><?= Html::encode($model->introduction) ?></p>
+            <p class="introduction"><?= Html::encode($model->introduction) ?></p>
         <?php else: ?>
-            <h2>Enter some introduction here</h2>
+            <h2 class="introduction">Enter some introduction here</h2>
         <?php endif; ?>
         
     </div>
